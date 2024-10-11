@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (roles = []) => {
   return (req, res, next) => {
-    const token = req.header("Authorization")?.replace("Bearer ", "");
+    const token = req.header("x-auth-token");
     if (!token) {
       return res
         .status(401)
