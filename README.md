@@ -72,7 +72,7 @@ The School Management System is a web application designed to facilitate the man
 3. Create a `.env` file in the `client` directory with the following environment variables:
 
     ```plaintext
-    REACT_APP_API_URL=http://localhost:5000
+    REACT_APP_API_URL=http://localhost:5000/api
     ```
 
 4. Start the React application:
