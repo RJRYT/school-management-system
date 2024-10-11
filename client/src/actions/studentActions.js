@@ -4,6 +4,7 @@ import {
   FETCH_STUDENTS_FAIL,
   ADD_STUDENT_SUCCESS,
   ADD_STUDENT_FAIL,
+  DELETE_STUDENT,
 } from "../constants/studentConstants";
 
 // Fetch all students
@@ -26,5 +27,18 @@ export const addStudent = (studentData) => async (dispatch) => {
     dispatch({ type: ADD_STUDENT_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: ADD_STUDENT_FAIL, payload: error.response.data.message });
+  }
+};
+
+// **Delete student**
+export const deleteStudent = (studentId) => async (dispatch) => {
+  try {
+    await axios.delete(`student/${studentId}`);
+    dispatch({
+      type: DELETE_STUDENT,
+      payload: studentId,
+    });
+  } catch (err) {
+    console.error(err);
   }
 };
