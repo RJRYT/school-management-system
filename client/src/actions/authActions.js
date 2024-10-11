@@ -17,7 +17,7 @@ export const login = (email, password) => async (dispatch) => {
     });
     return true;
   } catch (err) {
-    console.log(err.response.data);
+    console.log(err);
     return false;
   }
 };
