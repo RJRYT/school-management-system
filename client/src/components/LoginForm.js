@@ -1,40 +1,42 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../actions/authActions";
+import { login, checkAuthStatus } from "../actions/authActions";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(login(email, password));
-    navigate("/dashboard"); // Redirect after login
+    const success = await dispatch(login(email, password));
+
+    if (success) {
+      checkAuthStatus();
+      navigate("/dashboard"); // Redirect to dashboard after login
+    } else {
+      setError("Invalid credentials. Please try again.");
+    }
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
+    <form onSubmit={handleSubmit}>
+      {error && <p>{error}</p>}
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+      />
       <button type="submit">Login</button>
     </form>
   );

@@ -1,10 +1,12 @@
 const jwt = require('jsonwebtoken');
 
-const authMiddleware = (roles = []) => {
+module.exports = (roles = []) => {
   return (req, res, next) => {
-    const token = req.header('Authorization');
+    const token = req.header("Authorization")?.replace("Bearer ", "");
     if (!token) {
-      return res.status(401).json({ message: 'No token, authorization denied' });
+      return res
+        .status(401)
+        .json({ message: "No token, authorization denied" });
     }
 
     try {
@@ -12,14 +14,12 @@ const authMiddleware = (roles = []) => {
       req.user = decoded;
 
       if (roles.length && !roles.includes(req.user.role)) {
-        return res.status(403).json({ message: 'Access denied' });
+        return res.status(403).json({ message: "Access denied" });
       }
 
       next();
     } catch (err) {
-      res.status(401).json({ message: 'Token is not valid' });
+      res.status(401).json({ message: "Token is not valid" });
     }
   };
 };
-
-module.exports = authMiddleware;

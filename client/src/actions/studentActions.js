@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../instances/axiosInstance";
 import {
   FETCH_STUDENTS_SUCCESS,
   FETCH_STUDENTS_FAIL,
@@ -9,7 +9,7 @@ import {
 // Fetch all students
 export const fetchStudents = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/students");
+    const { data } = await axios.get("student");
     dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -22,7 +22,7 @@ export const fetchStudents = () => async (dispatch) => {
 // Add new student
 export const addStudent = (studentData) => async (dispatch) => {
   try {
-    const { data } = await axios.post("/api/students", studentData);
+    const { data } = await axios.post("student", studentData);
     dispatch({ type: ADD_STUDENT_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: ADD_STUDENT_FAIL, payload: error.response.data.message });

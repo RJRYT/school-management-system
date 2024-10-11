@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../instances/axiosInstance";
 import {
   FETCH_LIBRARY_HISTORY_SUCCESS,
   FETCH_LIBRARY_HISTORY_FAIL,
@@ -7,7 +7,7 @@ import {
 // Fetch library history
 export const fetchLibraryHistory = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/library");
+    const { data } = await axios.get("library");
     dispatch({ type: FETCH_LIBRARY_HISTORY_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
