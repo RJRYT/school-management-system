@@ -7,13 +7,13 @@ const StaffDashboard = () => {
       <h1>Office Staff Dashboard</h1>
       <ul>
         <li>
-          <Link to="/students">Manage Students</Link>
+          <Link to="student">Manage Students</Link>
         </li>
         <li>
-          <Link to="/fees-history">Manage Fees History</Link>
+          <Link to="history/fees">Manage Fees History</Link>
         </li>
         <li>
-          <Link to="/library-history">View Library History</Link>
+          <Link to="history/library">View Library History</Link>
         </li>
       </ul>
     </div>

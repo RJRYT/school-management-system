@@ -11,6 +11,7 @@ import RoleBasedRoute from "./components/RoleBasedRoute";
 import FeesHistory from "./components/FeesHistory";
 import StudentList from "./components/StudentList";
 import LibraryHistory from "./components/LibraryHistory";
+import AddStudentForm from "./components/AddStudentForm";
 
 const routes = [
   {
@@ -27,6 +28,16 @@ const routes = [
     path: "/dashboard/admin/student",
     roles: ["Admin"],
     element: <StudentList />,
+  },
+  {
+    path: "/dashboard/admin/student/new",
+    roles: ["Admin"],
+    element: <AddStudentForm />,
+  },
+  {
+    path: "/dashboard/admin/student/update/:studentId",
+    roles: ["Admin"],
+    element: <AddStudentForm />,
   },
   {
     path: "/dashboard/admin/history/library",

@@ -4,10 +4,15 @@ import {
   ADD_STUDENT_SUCCESS,
   ADD_STUDENT_FAIL,
   DELETE_STUDENT,
+  UPDATE_STUDENT_FAIL,
+  UPDATE_STUDENT_SUCCESS,
+  FETCH_STUDENT_SUCCESS,
+  FETCH_STUDENT_FAIL,
 } from "../constants/studentConstants";
 
 const initialState = {
   students: [],
+  student: null,
   error: null,
 };
 
@@ -28,6 +33,14 @@ export const studentReducer = (state = initialState, action) => {
           (student) => student._id !== action.payload
         ),
       };
+      case FETCH_STUDENT_SUCCESS:
+        return { ...state, student: action.payload?.student };
+      case FETCH_STUDENT_FAIL:
+        return { ...state, error: action.payload };
+      case UPDATE_STUDENT_SUCCESS:
+        return { ...state, student: action.payload?.student }
+      case UPDATE_STUDENT_FAIL:
+        return { ...state, error: action.payload }
     default:
       return state;
   }

@@ -9,6 +9,11 @@ router.get(
   AuthMiddleware(["Admin", "OfficeStaff"]),
   StudentController.getStudents
 );
+router.get(
+  "/:id",
+  AuthMiddleware(["Admin", "OfficeStaff"]),
+  StudentController.getStudentsById
+);
 router.post(
   "/",
   AuthMiddleware(["Admin", "OfficeStaff"]),

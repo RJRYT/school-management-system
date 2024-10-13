@@ -7,16 +7,16 @@ const AdminDashboard = () => {
       <h1>Admin Dashboard</h1>
       <ul>
         <li>
-          <Link to="/students">Manage Students</Link>
+          <Link to="student">Manage Students</Link>
         </li>
         <li>
-          <Link to="/library-history">Manage Library History</Link>
+          <Link to="history/library">Manage Library History</Link>
         </li>
         <li>
-          <Link to="/fees-history">Manage Fees History</Link>
+          <Link to="history/fees">Manage Fees History</Link>
         </li>
         <li>
-          <Link to="/manage-users">Manage Office Staff & Librarians</Link>
+          <Link to="users">Manage Office Staff & Librarians</Link>
         </li>
       </ul>
     </div>

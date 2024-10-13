@@ -3,12 +3,7 @@ const mongoose = require("mongoose");
 // Define the Student schema
 const studentSchema = new mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    lastName: {
+    name: {
       type: String,
       required: true,
       trim: true,
@@ -57,13 +52,6 @@ const studentSchema = new mongoose.Schema(
       enum: ["Paid", "Pending", "Partial"],
       default: "Pending",
     },
-    libraryHistory: [
-      {
-        bookTitle: { type: String, required: true },
-        issuedDate: { type: Date, required: true },
-        returnDate: { type: Date },
-      },
-    ],
   },
   {
     timestamps: true, 

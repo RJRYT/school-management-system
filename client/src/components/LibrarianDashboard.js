@@ -7,10 +7,10 @@ const LibrarianDashboard = () => {
       <h1>Librarian Dashboard</h1>
       <ul>
         <li>
-          <Link to="/students">View Student Details</Link>
+          <Link to="student">View Student Details</Link>
         </li>
         <li>
-          <Link to="/library-history">Manage Library History</Link>
+          <Link to="history/library">Manage Library History</Link>
         </li>
       </ul>
     </div>

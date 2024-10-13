@@ -5,6 +5,10 @@ import {
   ADD_STUDENT_SUCCESS,
   ADD_STUDENT_FAIL,
   DELETE_STUDENT,
+  UPDATE_STUDENT_FAIL,
+  UPDATE_STUDENT_SUCCESS,
+  FETCH_STUDENT_SUCCESS,
+  FETCH_STUDENT_FAIL,
 } from "../constants/studentConstants";
 
 // Fetch all students
@@ -40,5 +44,23 @@ export const deleteStudent = (studentId) => async (dispatch) => {
     });
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const updateStudent = (id, studentData) => async (dispatch) => {
+  try {
+    const response = await axios.put(`student/${id}`, studentData);
+    dispatch({ type: UPDATE_STUDENT_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: UPDATE_STUDENT_FAIL, payload: error.response.data });
+  }
+};
+
+export const fetchStudentById = (id) => async (dispatch) => {
+  try {
+    const response = await axios.get(`student/${id}`);
+    dispatch({ type: FETCH_STUDENT_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: FETCH_STUDENT_FAIL, payload: error.response.data });
   }
 };
