@@ -22,7 +22,7 @@ export const fetchStudents = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: FETCH_STUDENTS_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -33,7 +33,7 @@ export const addStudent = (studentData) => async (dispatch) => {
     const { data } = await axios.post("student", studentData);
     dispatch({ type: ADD_STUDENT_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: ADD_STUDENT_FAIL, payload: error.response.data.message });
+    dispatch({ type: ADD_STUDENT_FAIL, payload: error.message });
   }
 };
 

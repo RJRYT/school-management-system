@@ -6,6 +6,7 @@ exports.getStudents = async (req, res) => {
     const students = await Student.find();
     res.json(students);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
 };
@@ -24,6 +25,7 @@ exports.getStudentsById = async (req, res) => {
       student,
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
 };
@@ -56,6 +58,7 @@ exports.addStudent = async (req, res) => {
     const savedStudent = await newStudent.save();
     res.status(201).json({ success: true, student: savedStudent });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ success: false, message: err.message });
   }
 };
@@ -97,6 +100,7 @@ exports.updateStudent = async (req, res) => {
 
     res.status(200).json({ success: true, student: updatedStudent });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ success: false, message: err.message });
   }
 

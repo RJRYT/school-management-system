@@ -6,12 +6,12 @@ const router = express.Router();
 // Routes for Admin and Office Staff
 router.get(
   "/",
-  AuthMiddleware(["Admin", "OfficeStaff"]),
+  AuthMiddleware(["Admin", "OfficeStaff", "Librarian"]),
   StudentController.getStudents
 );
 router.get(
   "/:id",
-  AuthMiddleware(["Admin", "OfficeStaff"]),
+  AuthMiddleware(["Admin", "OfficeStaff", "Librarian"]),
   StudentController.getStudentsById
 );
 router.post(

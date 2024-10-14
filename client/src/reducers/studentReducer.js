@@ -43,7 +43,7 @@ export const studentReducer = (state = initialState, action) => {
     case FETCH_STUDENT_SUCCESS:
       return { ...state, student: action.payload?.student, loading: false };
     case FETCH_STUDENT_FAIL:
-      return { ...state, error: action.payload, loading: false };
+      return { ...state, student: null, error: action.payload, loading: false };
     case UPDATE_STUDENT_SUCCESS:
       return { ...state, student: action.payload?.student }
     case UPDATE_STUDENT_FAIL:
