@@ -28,7 +28,7 @@ export const feesReducer = (state = initialState, action) => {
     case FETCH_FEES_HISTORY_ALL_FAIL:
       return { ...state, error: action.payload, loading: false };
     case ADD_FEES_HISTORY_SUCCESS:
-      return { ...state, feesHistory: [...state.feesHistory.data, action.payload] };
+      return { ...state, feesHistory: [...state.feesHistory, action.payload.data] };
     case ADD_FEES_HISTORY_FAIL:
       return { ...state, error: action.payload }
     case DELETE_FEES_HISTORY:
@@ -45,7 +45,7 @@ export const feesReducer = (state = initialState, action) => {
     case FETCH_FEES_HISTORY_FAIL:
       return { ...state, singleHistory: null, error: action.payload, loading: false };
     case UPDATE_FEES_HISTORY_SUCCESS:
-      return { ...state, singleHistory: action.payload }
+      return { ...state, singleHistory: action.payload.data }
     case UPDATE_FEES_HISTORY_FAIL:
       return { ...state, error: action.payload }
     default:

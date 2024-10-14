@@ -28,7 +28,7 @@ export const libraryReducer = (state = initialState, action) => {
     case FETCH_LIBRARY_HISTORY_ALL_FAIL:
       return { ...state, error: action.payload, loading: false };
     case ADD_LIBRARY_HISTORY_SUCCESS:
-      return { ...state, libraryHistory: [...state.libraryHistory.data, action.payload] };
+      return { ...state, libraryHistory: [...state.libraryHistory, action.payload.data] };
     case ADD_LIBRARY_HISTORY_FAIL:
       return { ...state, error: action.payload };
     case DELETE_LIBRARY_HISTORY:
@@ -45,7 +45,7 @@ export const libraryReducer = (state = initialState, action) => {
     case FETCH_LIBRARY_HISTORY_FAIL:
       return { ...state, singleHistory: null, error: action.payload, loading: false };
     case UPDATE_LIBRARY_HISTORY_SUCCESS:
-      return { ...state, singleHistory: action.payload }
+      return { ...state, singleHistory: action.payload.data }
     case UPDATE_LIBRARY_HISTORY_FAIL:
       return { ...state, error: action.payload }
     default:
