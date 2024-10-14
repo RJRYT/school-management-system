@@ -3,11 +3,13 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addStudent, updateStudent, fetchStudentById } from "../actions/studentActions";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 const AddStudentForm = () => {
   const dispatch = useDispatch();
   const { studentId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { student:studentData, loading } = useSelector(state => state.student);
   const isUpdateMode = !!studentId;
 
@@ -66,6 +68,9 @@ const AddStudentForm = () => {
       } else {
         dispatch(addStudent(values));
       }
+      const currentPath = location.pathname;
+      const newPath = currentPath.replace(/\/update\/[^/]+|\/new$/, "");
+      navigate(newPath);
     },
     enableReinitialize: true,
   });

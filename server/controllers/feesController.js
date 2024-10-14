@@ -48,7 +48,7 @@ exports.updateFeesHistory = async (req, res) => {
 
 exports.deleteFeesHistory = async (req, res) => {
   try {
-    const deletedHistory = await FeesHistory.findByIdAndDelete(req.params.id);
+    const deletedHistory = await Fees.findByIdAndDelete(req.params.id);
     if (!deletedHistory) return res.status(404).json({ message: "Fees history not found" });
     res.status(200).json({ success: true, message: "Deleted successfully" });
   } catch (error) {

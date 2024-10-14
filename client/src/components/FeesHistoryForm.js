@@ -4,11 +4,13 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStudents } from "../actions/studentActions";
 import { addFeesHistory, updateFeesHistory, fetchFeesHistoryById } from "../actions/feesActions";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 const FeesHistoryForm = () => {
   const dispatch = useDispatch();
   const { historyId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { students, loading: studentsLoading } = useSelector(state => state.student);
   const { singleHistory, loading: historyLoading, error } = useSelector((state) => state.fees);
   const isUpdateMode = !!historyId;
@@ -43,6 +45,9 @@ const FeesHistoryForm = () => {
       } else {
         dispatch(addFeesHistory(values));
       }
+      const currentPath = location.pathname;
+      const newPath = currentPath.replace(/\/update\/[^/]+|\/new$/, "");
+      navigate(newPath);
     },
     enableReinitialize: true,
   });

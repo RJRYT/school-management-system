@@ -9,7 +9,7 @@ const FeesHistory = () => {
   const { feesHistory, loading, error } = useSelector((state) => state.fees);
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [historyToDelete, setHistoryToDelete] = useState(null);
-console.log(feesHistory);
+
   const handleDelete = (id) => {
     setHistoryToDelete(id);
     setDialogOpen(true);
