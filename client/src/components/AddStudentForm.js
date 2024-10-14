@@ -8,8 +8,7 @@ import { useParams } from "react-router-dom";
 const AddStudentForm = () => {
   const dispatch = useDispatch();
   const { studentId } = useParams();
-  const studentDetails = useSelector(state => state.student);
-  const studentData = studentDetails.student;
+  const { student:studentData, loading } = useSelector(state => state.student);
   const isUpdateMode = !!studentId;
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const AddStudentForm = () => {
       rollNumber: studentData?.rollNumber || "",
       class: studentData?.class || "",
       section: studentData?.section || "",
-      dateOfBirth: studentData?.dateOfBirth || "",
+      dateOfBirth: studentData?.dateOfBirth.split("T")[0] || "",
       gender: studentData?.gender || "",
       address: {
         street: studentData?.address?.street || "",
@@ -68,7 +67,16 @@ const AddStudentForm = () => {
         dispatch(addStudent(values));
       }
     },
+    enableReinitialize: true,
   });
+
+  if (loading && isUpdateMode) {
+    return <p>Loading...</p>;
+  }
+
+  if (!studentData && isUpdateMode) {
+    return <p>Student not found.</p>;
+  }
   
   return (
     <form onSubmit={formik.handleSubmit}>

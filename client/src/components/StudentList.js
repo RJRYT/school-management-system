@@ -6,7 +6,7 @@ import ConfirmationDialog from "./ConfirmationDialog";
 
 const StudentList = () => {
   const dispatch = useDispatch();
-  const { students } = useSelector((state) => state.student);
+  const { students, loading } = useSelector((state) => state.student);
 
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [studentToDelete, setStudentToDelete] = useState(null);
@@ -25,6 +25,10 @@ const StudentList = () => {
     dispatch(fetchStudents());
   }, [dispatch]);
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <h2>Student List</h2>
@@ -42,8 +46,8 @@ const StudentList = () => {
               <td>{student._id}</td>
               <td>{student.name}</td>
               <td>
-                <Link to={`/students/${student._id}`}>View</Link>
-                <Link to={`/students/edit/${student._id}`}>Edit</Link>
+                <Link to={`${student._id}`}>View</Link>
+                <Link to={`update/${student._id}`}>Edit</Link>
                 <button onClick={() => handleDelete(student._id)}>
                   Delete
                 </button>

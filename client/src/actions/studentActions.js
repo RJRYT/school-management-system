@@ -1,5 +1,6 @@
 import axios from "../instances/axiosInstance";
 import {
+  FETCH_STUDENTS,
   FETCH_STUDENTS_SUCCESS,
   FETCH_STUDENTS_FAIL,
   ADD_STUDENT_SUCCESS,
@@ -7,6 +8,7 @@ import {
   DELETE_STUDENT,
   UPDATE_STUDENT_FAIL,
   UPDATE_STUDENT_SUCCESS,
+  FETCH_STUDENT,
   FETCH_STUDENT_SUCCESS,
   FETCH_STUDENT_FAIL,
 } from "../constants/studentConstants";
@@ -14,6 +16,7 @@ import {
 // Fetch all students
 export const fetchStudents = () => async (dispatch) => {
   try {
+    dispatch({ type: FETCH_STUDENTS });
     const { data } = await axios.get("student");
     dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: data });
   } catch (error) {
@@ -58,6 +61,7 @@ export const updateStudent = (id, studentData) => async (dispatch) => {
 
 export const fetchStudentById = (id) => async (dispatch) => {
   try {
+    dispatch({ type: FETCH_STUDENT });
     const response = await axios.get(`student/${id}`);
     dispatch({ type: FETCH_STUDENT_SUCCESS, payload: response.data });
   } catch (error) {

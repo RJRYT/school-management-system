@@ -12,6 +12,7 @@ import FeesHistory from "./components/FeesHistory";
 import StudentList from "./components/StudentList";
 import LibraryHistory from "./components/LibraryHistory";
 import AddStudentForm from "./components/AddStudentForm";
+import StudentView from "./components/StudentView";
 
 const routes = [
   {
@@ -40,6 +41,11 @@ const routes = [
     element: <AddStudentForm />,
   },
   {
+    path: "/dashboard/admin/student/:studentId",
+    roles: ["Admin"],
+    element: <StudentView />,
+  },
+  {
     path: "/dashboard/admin/history/library",
     roles: ["Admin"],
     element: <LibraryHistory />,
@@ -65,6 +71,11 @@ const routes = [
     element: <StudentList />,
   },
   {
+    path: "/dashboard/staff/student/:studentId",
+    roles: ["OfficeStaff"],
+    element: <StudentView />,
+  },
+  {
     path: "/dashboard/staff/history/library",
     roles: ["OfficeStaff"],
     element: <LibraryHistory />,
@@ -83,6 +94,11 @@ const routes = [
     path: "/dashboard/librarian/student",
     roles: ["Librarian"],
     element: <StudentList />,
+  },
+  {
+    path: "/dashboard/librarian/student/:studentId",
+    roles: ["Librarian"],
+    element: <StudentView />,
   },
   {
     path: "/dashboard/librarian/history/library",
