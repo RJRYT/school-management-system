@@ -5,6 +5,7 @@ const FeesRoutes = require("./feesRoutes");
 const LibraryRoutes = require("./libraryRoutes");
 const StudentRoutes = require("./studentRoutes");
 const UserRoutes = require("./userRoutes");
+const UsersRoutes = require("./usersRoutes");
 
 const router = express.Router();
 
@@ -22,6 +23,7 @@ router.use("/api/fees", FeesRoutes);
 router.use("/api/library", LibraryRoutes);
 router.use("/api/student", StudentRoutes);
 router.use("/api/user", UserRoutes);
+router.use("/api/users", UsersRoutes);
 
 router.use(ErrorHandler.NotFoundMiddleware);
 

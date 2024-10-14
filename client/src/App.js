@@ -15,6 +15,8 @@ import AddStudentForm from "./components/AddStudentForm";
 import StudentView from "./components/StudentView";
 import LibraryHistoryForm from "./components/LibraryHistoryForm";
 import FeesHistoryForm from "./components/FeesHistoryForm";
+import UsersList from "./components/UsersList";
+import AddUserForm from "./components/AddUserForm";
 
 const routes = [
   {
@@ -80,7 +82,17 @@ const routes = [
   {
     path: "/dashboard/admin/users",
     roles: ["Admin"],
-    element: <AdminDashboard />,
+    element: <UsersList />,
+  },
+  {
+    path: "/dashboard/admin/users/new",
+    roles: ["Admin"],
+    element: <AddUserForm />,
+  },
+  {
+    path: "/dashboard/admin/users/update/:userId",
+    roles: ["Admin"],
+    element: <AddUserForm />,
   },
   {
     path: "/dashboard/staff",

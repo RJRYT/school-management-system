@@ -5,17 +5,18 @@ import { authReducer } from "./reducers/authReducer";
 import { studentReducer } from "./reducers/studentReducer";
 import { libraryReducer } from "./reducers/libraryReducer";
 import { feesReducer } from "./reducers/feesReducer";
+import { userReducer } from "./reducers/userReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   student: studentReducer,
   library: libraryReducer,
   fees: feesReducer,
+  user: userReducer,
 });
 
 const initialState = {};
 
-// No change needed here
 const middleware = [thunk];
 
 const store = createStore(
