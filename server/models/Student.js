@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// Define the Student schema
 const studentSchema = new mongoose.Schema(
   {
     name: {

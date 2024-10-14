@@ -1,4 +1,4 @@
-const Library = require("../models/Library");
+const { Library } = require("../models");
 
 // Get library history
 exports.getLibraryHistory = async (req, res) => {
@@ -8,7 +8,7 @@ exports.getLibraryHistory = async (req, res) => {
     res.json({ success: true, data: histories });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 
@@ -30,7 +30,7 @@ exports.addLibraryHistory = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 
@@ -49,7 +49,7 @@ exports.updateLibraryHistory = async (req, res) => {
     res.json({ success: true, data: updatedHistory });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 
@@ -64,7 +64,7 @@ exports.getSingleLibraryHistory = async (req, res) => {
     res.json({ success: true, data: history });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 
@@ -79,6 +79,6 @@ exports.deleteLibraryHistory = async (req, res) => {
     res.json({ success: true, message: "History deleted successfully" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };

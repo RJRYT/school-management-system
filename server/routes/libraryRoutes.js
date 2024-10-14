@@ -10,24 +10,28 @@ router.get(
   LibraryController.getLibraryHistory
 );
 
+// @route GET /api/library/:id
 router.get(
   "/:id",
   AuthMiddleware(["Admin", "Librarian", "OfficeStaff"]),
   LibraryController.getSingleLibraryHistory
 );
 
+// @route POST /api/library
 router.post(
   "/",
   AuthMiddleware(["Admin", "Librarian"]),
   LibraryController.addLibraryHistory
 );
 
+// @route PUT /api/library/:id
 router.put(
   "/:id",
   AuthMiddleware(["Admin", "Librarian"]),
   LibraryController.updateLibraryHistory
 );
 
+// @route DELETE /api/library/:id
 router.delete(
   "/:id",
   AuthMiddleware(["Admin"]),

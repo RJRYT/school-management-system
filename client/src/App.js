@@ -14,6 +14,7 @@ import LibraryHistory from "./components/LibraryHistory";
 import AddStudentForm from "./components/AddStudentForm";
 import StudentView from "./components/StudentView";
 import LibraryHistoryForm from "./components/LibraryHistoryForm";
+import FeesHistoryForm from "./components/FeesHistoryForm";
 
 const routes = [
   {
@@ -67,6 +68,16 @@ const routes = [
     element: <FeesHistory />,
   },
   {
+    path: "/dashboard/admin/history/fees/new",
+    roles: ["Admin"],
+    element: <FeesHistoryForm />,
+  },
+  {
+    path: "/dashboard/admin/history/fees/update/:historyId",
+    roles: ["Admin"],
+    element: <FeesHistoryForm />,
+  },
+  {
     path: "/dashboard/admin/users",
     roles: ["Admin"],
     element: <AdminDashboard />,
@@ -95,6 +106,16 @@ const routes = [
     path: "/dashboard/staff/history/fees",
     roles: ["OfficeStaff"],
     element: <FeesHistory />,
+  },
+  {
+    path: "/dashboard/staff/history/fees/new",
+    roles: ["OfficeStaff"],
+    element: <FeesHistoryForm />,
+  },
+  {
+    path: "/dashboard/staff/history/fees/update/:historyId",
+    roles: ["OfficeStaff"],
+    element: <FeesHistoryForm />,
   },
   {
     path: "/dashboard/librarian",
