@@ -37,12 +37,12 @@ const routes = [
   {
     path: "/dashboard/admin/student/new",
     roles: ["Admin"],
-    element: <AddStudentForm />,
+    element: <AddStudentForm role={"admin"}/>,
   },
   {
     path: "/dashboard/admin/student/update/:studentId",
     roles: ["Admin"],
-    element: <AddStudentForm />,
+    element: <AddStudentForm role={"admin"}/>,
   },
   {
     path: "/dashboard/admin/student/:studentId",
@@ -87,7 +87,7 @@ const routes = [
   {
     path: "/dashboard/admin/users/new",
     roles: ["Admin"],
-    element: <AddUserForm />,
+    element: <AddUserForm role={"admin"}/>,
   },
   {
     path: "/dashboard/admin/users/update/:userId",
