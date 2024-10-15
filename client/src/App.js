@@ -32,7 +32,7 @@ const routes = [
   {
     path: "/dashboard/admin/student",
     roles: ["Admin"],
-    element: <StudentList />,
+    element: <StudentList role={"admin"} />,
   },
   {
     path: "/dashboard/admin/student/new",
@@ -52,7 +52,7 @@ const routes = [
   {
     path: "/dashboard/admin/history/library",
     roles: ["Admin"],
-    element: <LibraryHistory />,
+    element: <LibraryHistory role={"admin"} />,
   },
   {
     path: "/dashboard/admin/history/library/new",
@@ -67,7 +67,7 @@ const routes = [
   {
     path: "/dashboard/admin/history/fees",
     roles: ["Admin"],
-    element: <FeesHistory />,
+    element: <FeesHistory role={"admin"} />,
   },
   {
     path: "/dashboard/admin/history/fees/new",
@@ -82,7 +82,7 @@ const routes = [
   {
     path: "/dashboard/admin/users",
     roles: ["Admin"],
-    element: <UsersList />,
+    element: <UsersList role={"admin"}/>,
   },
   {
     path: "/dashboard/admin/users/new",
@@ -102,7 +102,7 @@ const routes = [
   {
     path: "/dashboard/staff/student",
     roles: ["OfficeStaff"],
-    element: <StudentList />,
+    element: <StudentList  role={"staff"}/>,
   },
   {
     path: "/dashboard/staff/student/:studentId",
@@ -112,12 +112,12 @@ const routes = [
   {
     path: "/dashboard/staff/history/library",
     roles: ["OfficeStaff"],
-    element: <LibraryHistory />,
+    element: <LibraryHistory role={"staff"} />,
   },
   {
     path: "/dashboard/staff/history/fees",
     roles: ["OfficeStaff"],
-    element: <FeesHistory />,
+    element: <FeesHistory role={"staff"} />,
   },
   {
     path: "/dashboard/staff/history/fees/new",
@@ -137,7 +137,7 @@ const routes = [
   {
     path: "/dashboard/librarian/student",
     roles: ["Librarian"],
-    element: <StudentList />,
+    element: <StudentList  role={"librarian"}/>,
   },
   {
     path: "/dashboard/librarian/student/:studentId",
@@ -147,7 +147,7 @@ const routes = [
   {
     path: "/dashboard/librarian/history/library",
     roles: ["Librarian"],
-    element: <LibraryHistory />,
+    element: <LibraryHistory role={"librarian"} />,
   },
   {
     path: "/dashboard/librarian/history/library/new",

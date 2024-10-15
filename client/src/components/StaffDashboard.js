@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const navLinks = [
   {
     path: "student",
-    title: "Manage Details",
+    title: "Manage Student Details",
     description: "Add, edit, and manage student records."
   },
   {
