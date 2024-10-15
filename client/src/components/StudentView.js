@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchStudentById } from "../actions/studentActions";
+import InfoDialogBox from "./InfoDialogBox";
 
 const StudentView = () => {
   const { studentId } = useParams(); 
@@ -14,11 +15,11 @@ const StudentView = () => {
   }, [dispatch, studentId]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <InfoDialogBox title="Loading" text="We are processing your request." />;
   }
 
   if (!student) {
-    return <p>Student not found.</p>;
+    return <InfoDialogBox title="Student not Found" text="Student id provided is not found in our records." />;
   }
 
   return (

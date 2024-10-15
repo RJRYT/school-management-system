@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { login, checkAuthStatus } from "../actions/authActions";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import backgroundImage from '../assets/background-image.jpg';
+import Loading from "./Loading";
 
 const LoginForm = () => {
   const [error, setError] = useState("");
+  const { isAuthenticated, loading } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useDispatch();
@@ -36,6 +38,10 @@ const LoginForm = () => {
       }
     },
   });
+  
+  if (loading) return <Loading />;
+
+  if(isAuthenticated) return <Navigate to="/dashboard" />;
 
   return (
     <div

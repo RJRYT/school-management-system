@@ -57,12 +57,12 @@ const routes = [
   {
     path: "/dashboard/admin/history/library/new",
     roles: ["Admin"],
-    element: <LibraryHistoryForm />,
+    element: <LibraryHistoryForm role={"admin"}/>,
   },
   {
     path: "/dashboard/admin/history/library/update/:historyId",
     roles: ["Admin"],
-    element: <LibraryHistoryForm />,
+    element: <LibraryHistoryForm role={"admin"}/>,
   },
   {
     path: "/dashboard/admin/history/fees",
@@ -72,12 +72,12 @@ const routes = [
   {
     path: "/dashboard/admin/history/fees/new",
     roles: ["Admin"],
-    element: <FeesHistoryForm />,
+    element: <FeesHistoryForm role={"admin"}/>,
   },
   {
     path: "/dashboard/admin/history/fees/update/:historyId",
     roles: ["Admin"],
-    element: <FeesHistoryForm />,
+    element: <FeesHistoryForm role={"admin"}/>,
   },
   {
     path: "/dashboard/admin/users",
@@ -92,7 +92,7 @@ const routes = [
   {
     path: "/dashboard/admin/users/update/:userId",
     roles: ["Admin"],
-    element: <AddUserForm />,
+    element: <AddUserForm role={"admin"}/>,
   },
   {
     path: "/dashboard/staff",
@@ -122,12 +122,12 @@ const routes = [
   {
     path: "/dashboard/staff/history/fees/new",
     roles: ["OfficeStaff"],
-    element: <FeesHistoryForm />,
+    element: <FeesHistoryForm role={"staff"}/>,
   },
   {
     path: "/dashboard/staff/history/fees/update/:historyId",
     roles: ["OfficeStaff"],
-    element: <FeesHistoryForm />,
+    element: <FeesHistoryForm role={"staff"}/>,
   },
   {
     path: "/dashboard/librarian",
@@ -152,12 +152,12 @@ const routes = [
   {
     path: "/dashboard/librarian/history/library/new",
     roles: ["Librarian"],
-    element: <LibraryHistoryForm />,
+    element: <LibraryHistoryForm role={"librarian"}/>,
   },
   {
     path: "/dashboard/librarian/history/library/update/:historyId",
     roles: ["Librarian"],
-    element: <LibraryHistoryForm />,
+    element: <LibraryHistoryForm role={"librarian"}/>,
   },
 ];
 

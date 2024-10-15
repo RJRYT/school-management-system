@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/background-image.jpg";
 import { logout } from "../actions/authActions";
 import ConfirmationDialog from "./ConfirmationDialog";
+import InfoDialogBox from "./InfoDialogBox";
 
 const MetaData = {
   admin: {
@@ -53,7 +54,7 @@ const StudentList = ({ role = "user" }) => {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <InfoDialogBox title="Loading" text="We are processing your request." />;
   }
 
   return (
