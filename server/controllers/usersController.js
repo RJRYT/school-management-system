@@ -45,6 +45,7 @@ exports.addNewUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
   try {
+    const { name, email, password:updatedPass=null, role } = req.body;
     const currentUser = await User.findById(req.user.userId);
 
     const userToUpdate = await User.findById(req.params.id);
@@ -52,9 +53,15 @@ exports.updateUser = async (req, res) => {
     if (!userToUpdate) {
       return res.status(404).json({ message: "User not found" });
     }
+    let password = userToUpdate.password;
 
     if (currentUser.superAdmin) {
-      const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      if(password) password = await bcrypt.hash(updatedPass, 10);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        { name, email, password, role },
+        { new: true }
+      );
       return res.json({ success: true, data: updatedUser });
     }
 
@@ -62,8 +69,13 @@ exports.updateUser = async (req, res) => {
       if (userToUpdate.role === "Admin") {
         return res.status(403).json({ message: "Admins cannot update other Admins" });
       }
+      if (password) password = await bcrypt.hash(updatedPass, 10);
 
-      const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        { name, email, password, role },
+        { new: true }
+      );
       return res.json({ success: true, data: updatedUser });
     }
 
