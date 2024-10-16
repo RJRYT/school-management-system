@@ -118,22 +118,26 @@ const FeesHistory = ({ role = "user" }) => {
               </tr>
             </thead>
             <tbody className="bg-white/50 backdrop-blur-sm">
-              {feesHistory.map((record) => (
-                <tr key={record._id} className="border-b">
-                  <td className="py-3 px-4">{record.studentId.name}</td>
-                  <td className="py-3 px-4">{record.paymentMethod}</td>
-                  <td className="py-3 px-4">{record.amountPaid}/-</td>
-                  <td className="py-3 px-4">{record.paymentDate.split("T")[0]}</td>
-                  <td className="py-3 px-4">{record.feesStatus}</td>
-                  <td className="py-3 px-4">{record.remarks || "---"}</td>
-                  {role !== "librarian" && <td className="py-3 px-4">
-                    <Link to={`update/${record._id}`} className="text-yellow-500 hover:text-yellow-700 mx-2">Edit</Link>
-                    <button onClick={() => handleDelete(record._id)} className="text-red-500 hover:text-red-700 mx-2">
-                      Delete
-                    </button>
-                  </td>}
-                </tr>
-              ))}
+              {feesHistory.length ?
+                feesHistory.map((record) => (
+                  <tr key={record._id} className="border-b">
+                    <td className="py-3 px-4">{record.studentId.name}</td>
+                    <td className="py-3 px-4">{record.paymentMethod}</td>
+                    <td className="py-3 px-4">{record.amountPaid}/-</td>
+                    <td className="py-3 px-4">{record.paymentDate.split("T")[0]}</td>
+                    <td className="py-3 px-4">{record.feesStatus}</td>
+                    <td className="py-3 px-4">{record.remarks || "---"}</td>
+                    {role !== "librarian" && <td className="py-3 px-4">
+                      <Link to={`update/${record._id}`} className="text-yellow-500 hover:text-yellow-700 mx-2">Edit</Link>
+                      <button onClick={() => handleDelete(record._id)} className="text-red-500 hover:text-red-700 mx-2">
+                        Delete
+                      </button>
+                    </td>}
+                  </tr>
+                )) :
+                <tr>
+                  <td className="py-3 px-4 text-md font-semibold text-center" colSpan={role !== "librarian" ? 7 : 6}>Data not found</td>
+                </tr>}
             </tbody>
           </table>
           <ConfirmationDialog

@@ -111,36 +111,41 @@ const StudentList = ({ role = "user" }) => {
               </tr>
             </thead>
             <tbody className="bg-white/50 backdrop-blur-sm">
-              {students.map((student) => (
-                <tr key={student._id} className="border-b">
-                  <td className="py-3 px-4">{student._id}</td>
-                  <td className="py-3 px-4">{student.name}</td>
-                  <td className="py-3 px-4">
-                    <Link
-                      to={`${student._id}`}
-                      className="text-blue-500 hover:text-blue-700 mx-2"
-                    >
-                      View
-                    </Link>
-                    {role !== "librarian" &&
-                      <>
-                        <Link
-                          to={`update/${student._id}`}
-                          className="text-yellow-500 hover:text-yellow-700 mx-2"
-                        >
-                          Edit
-                        </Link>
-                        <button
-                          onClick={() => handleDelete(student._id)}
-                          className="text-red-500 hover:text-red-700 mx-2"
-                        >
-                          Delete
-                        </button>
-                      </>
-                    }
-                  </td>
+              {students.length ?
+                students.map((student) => (
+                  <tr key={student._id} className="border-b">
+                    <td className="py-3 px-4">{student._id}</td>
+                    <td className="py-3 px-4">{student.name}</td>
+                    <td className="py-3 px-4">
+                      <Link
+                        to={`view/${student._id}`}
+                        className="text-blue-500 hover:text-blue-700 mx-2"
+                      >
+                        View
+                      </Link>
+                      {role !== "librarian" &&
+                        <>
+                          <Link
+                            to={`update/${student._id}`}
+                            className="text-yellow-500 hover:text-yellow-700 mx-2"
+                          >
+                            Edit
+                          </Link>
+                          <button
+                            onClick={() => handleDelete(student._id)}
+                            className="text-red-500 hover:text-red-700 mx-2"
+                          >
+                            Delete
+                          </button>
+                        </>
+                      }
+                    </td>
+                  </tr>
+                )) :
+                <tr>
+                  <td className="py-3 px-4 text-md font-semibold text-center" colSpan={3}>Data not found</td>
                 </tr>
-              ))}
+              }
             </tbody>
           </table>
           <ConfirmationDialog

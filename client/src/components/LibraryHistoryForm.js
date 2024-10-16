@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -9,6 +9,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import backgroundImage from "../assets/background-image.jpg";
 import { logout } from "../actions/authActions";
 import InfoDialogBox from "./InfoDialogBox";
+import ConfirmationDialog from "./ConfirmationDialog";
 
 const MetaData = {
   admin: {
@@ -34,6 +35,8 @@ const LibraryHistoryForm = ({ role = "user" }) => {
   const { historyId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const [isDialogOpen, setDialogOpen] = useState(false);
+  const [confirmValues, setConfirmValues] = useState(null);
   const { students, loading: studentsLoading } = useSelector(state => state.student);
   const { singleHistory, loading: historyLoading, error } = useSelector((state) => state.library);
   const isUpdateMode = !!historyId;
@@ -44,6 +47,18 @@ const LibraryHistoryForm = ({ role = "user" }) => {
       dispatch(fetchLibraryHistoryById(historyId));
     }
   }, [dispatch, historyId, isUpdateMode]);
+
+  const confirmProcess = () => {
+    if (isUpdateMode) {
+      dispatch(updateLibraryHistory(historyId, confirmValues));
+    } else {
+      dispatch(addLibraryHistory(confirmValues));
+    }
+    const currentPath = location.pathname;
+    const newPath = currentPath.replace(/\/update\/[^/]+|\/new$/, "");
+    navigate(newPath);
+    setDialogOpen(false);
+  };
 
   const handleLogout = () => {
     dispatch(logout());
@@ -66,14 +81,8 @@ const LibraryHistoryForm = ({ role = "user" }) => {
       isReturned: Yup.boolean(),
     }),
     onSubmit: (values) => {
-      if (isUpdateMode) {
-        dispatch(updateLibraryHistory(historyId, values));
-      } else {
-        dispatch(addLibraryHistory(values));
-      }
-      const currentPath = location.pathname;
-      const newPath = currentPath.replace(/\/update\/[^/]+|\/new$/, "");
-      navigate(newPath);
+      setConfirmValues(values);
+      setDialogOpen(true)
     },
     enableReinitialize: true,
   });
@@ -205,6 +214,12 @@ const LibraryHistoryForm = ({ role = "user" }) => {
               {isUpdateMode ? "Update Record" : "Add Record"}
             </button>
           </form>
+          <ConfirmationDialog
+            open={isDialogOpen}
+            onClose={() => setDialogOpen(false)}
+            onConfirm={confirmProcess}
+            message={`Are you sure you want to ${isUpdateMode ? "Update" : "Add"} this Record?`}
+          />
         </div>
       </div>
     </div>

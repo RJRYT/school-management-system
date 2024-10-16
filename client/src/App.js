@@ -45,9 +45,9 @@ const routes = [
     element: <AddStudentForm role={"admin"}/>,
   },
   {
-    path: "/dashboard/admin/student/:studentId",
+    path: "/dashboard/admin/student/view/:studentId",
     roles: ["Admin"],
-    element: <StudentView />,
+    element: <StudentView role={"admin"}/>,
   },
   {
     path: "/dashboard/admin/history/library",
@@ -105,9 +105,19 @@ const routes = [
     element: <StudentList  role={"staff"}/>,
   },
   {
-    path: "/dashboard/staff/student/:studentId",
+    path: "/dashboard/staff/student/new",
     roles: ["OfficeStaff"],
-    element: <StudentView />,
+    element: <AddStudentForm role={"staff"}/>,
+  },
+  {
+    path: "/dashboard/staff/student/update/:studentId",
+    roles: ["OfficeStaff"],
+    element: <AddStudentForm role={"staff"}/>,
+  },
+  {
+    path: "/dashboard/staff/student/view/:studentId",
+    roles: ["OfficeStaff"],
+    element: <StudentView role={"staff"}/>,
   },
   {
     path: "/dashboard/staff/history/library",
@@ -140,9 +150,9 @@ const routes = [
     element: <StudentList  role={"librarian"}/>,
   },
   {
-    path: "/dashboard/librarian/student/:studentId",
+    path: "/dashboard/librarian/student/view/:studentId",
     roles: ["Librarian"],
-    element: <StudentView />,
+    element: <StudentView role={"librarian"}/>,
   },
   {
     path: "/dashboard/librarian/history/library",
