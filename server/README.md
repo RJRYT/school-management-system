@@ -829,7 +829,7 @@ This document provides the API details for the School Management System. The sys
             "name": "admin", 
             "email": "admin@gmail.com", 
             "password": "password", 
-            "role": "Admin
+            "role": "Admin"
         }
         ```
     - **Response**:
@@ -844,7 +844,7 @@ This document provides the API details for the School Management System. The sys
                 "name": "admin", 
                 "email": "admin@gmail.com", 
                 "password": "encoded password", 
-                "role": "Admin
+                "role": "Admin"
             }
         }
         ```
@@ -870,7 +870,7 @@ This document provides the API details for the School Management System. The sys
             "name": "admin", 
             "email": "admin@gmail.com", 
             "password": "password", 
-            "role": "Admin
+            "role": "Admin"
         }
         ```
     - **Response**:
@@ -885,7 +885,7 @@ This document provides the API details for the School Management System. The sys
                 "name": "admin", 
                 "email": "admin@gmail.com", 
                 "password": "encoded password", 
-                "role": "Admin
+                "role": "Admin"
             }
         }
         ```
