@@ -95,6 +95,13 @@ The School Management System is a web application designed to facilitate the man
 
 2. Set up the build settings and environment variables.
 
+### Demo
+
+[vercel.com](https://school-management-system-rjryt.vercel.app)
+
+- admin account: admin@gmail.com 
+- password: admin
+
 ## List of Used Libraries
 
 ### Backend Libraries
